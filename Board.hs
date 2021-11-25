@@ -1,6 +1,6 @@
 module Board where
   import Test
-  
+
   mkColumn 0 = []
   mkColumn n = 0 : mkColumn (n - 1)
 
