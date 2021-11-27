@@ -16,6 +16,7 @@ module Board where
         | h == 0 = p : t
         | otherwise = h : helper t p
 
+  dropInSlot [] _ _ = []
   dropInSlot (h:t) i p
     | i == 1 = dropInColumn h p : t
     | otherwise = h : dropInSlot t (i - 1) p

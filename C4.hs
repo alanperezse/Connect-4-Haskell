@@ -25,12 +25,3 @@ module C4 where
     | isWonHorizontal bd p = True
     | isWonVertical bd p = True
     | otherwise = False
-
-  playerToChar n
-    | n == 1 = 'O'
-    | n == 2 = 'X'
-    | otherwise = '.'
-
-  rowToStr r = foldl (++) "" (map (\p -> (playerToChar p : " ")) r)
-
-  boardToStr bd = foldl (\s r -> s ++ r ++ "\n") "" (map rowToStr (getRows bd))
