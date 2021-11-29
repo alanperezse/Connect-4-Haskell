@@ -8,6 +8,7 @@ module C4 where
       getRow [] _ = []
       getRow (h:t) i = h !! (i - 1) : getRow t i
 
+
   isWonList _ _ 4 = True
   isWonList [] _ _ = False
   isWonList (h:t) p s
@@ -21,7 +22,17 @@ module C4 where
 
   isWonHorizontal bd p = isWonVertical (getRows bd) p
 
+  getDiagonals [] = []
+  getDiagonals ([]:xss) = xss
+  getDiagonals xss = zipWith (++) (map ((:[]) . head) xss ++ repeat []) ([]:(getDiagonals (map tail xss)))
+
+  isWonDiagonal bd p
+    | isWonVertical (getDiagonals bd) p = True
+    | isWonVertical (getDiagonals (reverse bd)) p = True
+    | otherwise = False
+
   isWonBy bd p
     | isWonHorizontal bd p = True
     | isWonVertical bd p = True
+    | isWonDiagonal bd p = True
     | otherwise = False
