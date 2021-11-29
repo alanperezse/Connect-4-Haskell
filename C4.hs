@@ -23,8 +23,8 @@ module C4 where
   isWonHorizontal bd p = isWonVertical (getRows bd) p
 
   getDiagonals [] = []
-  getDiagonals ([]:xss) = xss
-  getDiagonals xss = zipWith (++) (map ((:[]) . head) xss ++ repeat []) ([]:(getDiagonals (map tail xss)))
+  getDiagonals ([]:t) = t
+  getDiagonals lst = zipWith (++) (map ((:[]) . head) lst ++ repeat []) ([]:(getDiagonals (map tail lst)))
 
   isWonDiagonal bd p
     | isWonVertical (getDiagonals bd) p = True
