@@ -1,3 +1,6 @@
+-- Code written by Alan Perez
+-- Submitted on Nov 29, 2021
+
 module Game where
   import System.IO
   import Data.Char
